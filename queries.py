@@ -54,3 +54,13 @@ def remove_bed(conn, crop):
     except sqlite3.IntegrityError:
         conn.rollback()
         return False
+
+
+def beds(conn):
+    return pd.read_sql_query("SELECT crop, location, sun FROM bed ORDER BY crop", conn)
+
+
+def status_counts(conn):
+    return pd.read_sql_query(
+        "SELECT status, COUNT(*) AS n FROM bed_log GROUP BY status ORDER BY status", conn
+    )
