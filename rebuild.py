@@ -30,3 +30,4 @@ def rebuild(db_path):
 if __name__ == "__main__":
     Path("garden.db").unlink(missing_ok=True)
     rebuild("garden.db")
+    print("Dude.  You just rebuilt garden.db")
